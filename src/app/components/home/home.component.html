@@ -4,7 +4,7 @@
     <mat-select
       panelClass="sort-select"
       [(ngModel)]="sort"
-  
+      (selectionChange)="searchGames(sort)"
     >
       <mat-option value="name">Name</mat-option>
       <mat-option value="-released">Released</mat-option>
@@ -18,8 +18,8 @@
 </div>
 
 <div class="games">
-  <ng-container>
-    <!-- <div class="game">
+  <ng-container *ngFor="let game of games">
+    <div class="game" (click)="openGameDetails(game.id)">
       <div class="game-thumb-container">
         <img
           *ngIf="game.background_image"
@@ -40,6 +40,6 @@
           />
         </div>
       </div>
-    </div> -->
+    </div>
   </ng-container>
 </div>
